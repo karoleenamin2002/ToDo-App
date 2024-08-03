@@ -62,7 +62,7 @@ class _ToDoState extends State<ToDo> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            ...alltasks.map((item)=>Todocard(vartitle:item.title))
+            ...alltasks.map((item)=>Todocard(vartitle:item.title,doneOrnot:item.status))
           ],
         ),
       ),
