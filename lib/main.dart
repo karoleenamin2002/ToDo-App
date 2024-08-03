@@ -20,6 +20,22 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class Task {
+  String title;
+  bool status;
+  Task({required this.title, required this.status});
+}
+
+List alltasks = [
+  Task(title: "Publish video", status:false),
+    Task(title: "Studying English", status:true),
+      Task(title: "Gem", status:false),
+        Task(title: "Flutter project", status:true),
+
+
+
+];
+
 class ToDo extends StatefulWidget {
   const ToDo({super.key});
 
@@ -41,14 +57,12 @@ class _ToDoState extends State<ToDo> {
               fontSize: 33, color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ),
-      body: SizedBox(width:double.infinity,
-        child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+      body: SizedBox(
+        width: double.infinity,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-          Todocard(),
-          Todocard(),
-          Todocard(),
-          Todocard(),
-          Todocard()            
+            ...alltasks.map((item)=>Todocard(vartitle:item.title))
           ],
         ),
       ),

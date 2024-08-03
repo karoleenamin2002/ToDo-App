@@ -1,15 +1,12 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
 
 import 'package:flutter/material.dart';
 
-class Todocard extends StatefulWidget {
-  const Todocard({super.key});
+class Todocard extends StatelessWidget {
+  const Todocard({super.key,required this.vartitle});
 
-  @override
-  State<Todocard> createState() => _TodocardState();
-}
+final String vartitle;
 
-class _TodocardState extends State<Todocard> {
   @override
   Widget build(BuildContext context) {
     return FractionallySizedBox(
@@ -24,7 +21,7 @@ class _TodocardState extends State<Todocard> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "sdfghjkl;",
+              vartitle,
               style: TextStyle(color: Colors.white, fontSize: 22),
             ),
             Icon(
