@@ -27,13 +27,10 @@ class Task {
 }
 
 List alltasks = [
-  Task(title: "Publish video", status:false),
-    Task(title: "Studying English", status:true),
-      Task(title: "Gem", status:false),
-        Task(title: "Flutter project", status:true),
-
-
-
+  Task(title: "Publish video", status: false),
+  Task(title: "Studying English", status: true),
+  Task(title: "Gem", status: false),
+  Task(title: "Flutter project", status: true),
 ];
 
 class ToDo extends StatefulWidget {
@@ -47,6 +44,39 @@ class _ToDoState extends State<ToDo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showModalBottomSheet(
+              context: context,
+              builder: (BuildContext context) {
+                return Container(
+                    padding: EdgeInsets.all(22),
+                    height: double.infinity,
+                    color: Colors.amber[100],
+                    child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextField(
+                          maxLength: 20,
+                          decoration: InputDecoration(hintText: "Add new Task"),
+                        ),
+                        SizedBox(
+                          height: 22,
+                        ),
+                        TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text(
+                              "ADD",
+                              style: TextStyle(fontSize: 22),
+                            ))
+                      ],
+                    ));
+              },isScrollControlled: true);
+        },
+        backgroundColor: Colors.redAccent,
+        child: Icon(Icons.add),
+      ),
       backgroundColor: Color.fromRGBO(58, 66, 86, 0.7),
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(58, 66, 86, 1),
@@ -62,7 +92,8 @@ class _ToDoState extends State<ToDo> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            ...alltasks.map((item)=>Todocard(vartitle:item.title,doneOrnot:item.status))
+            ...alltasks.map((item) =>
+                Todocard(vartitle: item.title, doneOrnot: item.status))
           ],
         ),
       ),
